@@ -1,0 +1,31 @@
+<div fxLayout="column" fxLayoutAlign="center center">
+    <h1>Simple Note App!!</h1>
+    <div fxLayout="row" fxLayoutAlign="end end" class="w-100-p">
+        <button mat-raised-button type="button" class="btn" (click)="createNewNote()">Add New Note</button>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="center space-between" class="mt-30 w-100-p" fxLayoutGap="15px">
+        <div *ngIf="noteList.length > 0" fxLayout="row" fxLayoutAlign="space-between center" fxFlex="100">
+            <span fxFlex="15" class="head-text">Title</span>
+            <span fxFlex="40" class="head-text">body</span>
+            <span fxFlex="25" class="head-text">Create Date</span>
+            <span fxFlex="10" class="head-text"></span>
+            <span fxFlex="10" class="head-text"></span>
+        </div>
+        <div *ngIf="noteList.length > 0">
+            <div *ngFor="let note of noteList" fxLayout="row" fxLayoutAlign="space-between center" (click)="gotToNoteDetails(note.noteId);" >
+                <span fxFlex="15">{{note?.title}}</span>
+                <span fxFlex="40">{{note?.body}}</span>
+                <span fxFlex="25">{{note?.createDate | date}}</span>
+                <span fxFlex="10" class="cursor-pointer" (click)="removeNotes(note.noteId); $event.stopPropagation()">
+                    <mat-icon class="delete-icon">delete</mat-icon>
+                </span>
+                <span fxFlex="10" class="cursor-pointer" (click)="editNotes(note.noteId); $event.stopPropagation()">
+                    <mat-icon class="edit-icon">edit</mat-icon>
+                </span>
+            </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="center center" *ngIf="noteList.length == 0">
+            <span>No Notes!!!</span>
+        </div>
+    </div>
+</div>

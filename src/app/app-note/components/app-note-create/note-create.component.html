@@ -1,0 +1,35 @@
+<div fxLayout="column" fxLayoutAlign="center center" class="m-30">
+    <h1>Create New Note</h1>
+
+    <div fxLayout="column" fxLayoutAlign="center space-between" class="mt-30 w-100-p">
+        <form *ngIf="noteForm" [formGroup]="noteForm" fxLayout="column" fxLayoutAlign="center space-between" class="w-100-p">
+            <div fxLayout="row" fxLayoutAlign="space-between center" fxFlex="100">
+                <span fxFlex="50">Title</span>
+                <mat-form-field fxFlex="50" appearance="outline">
+                    <mat-label>Title</mat-label>
+                    <input placeholder="title" type="text" matInput formControlName="title">
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-between center" fxFlex="100">
+                <span fxFlex="50">Body</span>
+                <mat-form-field fxFlex="50" appearance="outline">
+                    <mat-label>Body</mat-label>
+                    <textarea name="body" id="body" cols="30" rows="10" placeholder="body" matInput formControlName="body"></textarea>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-between center" fxFlex="100">
+                <span fxFlex="50">Create Date</span>
+                <mat-form-field fxFlex="50" appearance="outline">
+                    <mat-label>Choose a date</mat-label>
+                    <input matInput [matDatepicker]="picker" [disabled]="true" formControlName="createDate" placeholder="Create Date">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="end end" class="w-100-p">
+                <button mat-raised-button type="button" class="btn-gray" *ngIf="noteForm.invalid" [disabled]="true">Create Note</button>
+                <button mat-raised-button type="button" class="btn" *ngIf="noteForm.valid" (click)="createNewNote()">Create Note</button>
+            </div>
+        </form>
+    </div>
+</div>

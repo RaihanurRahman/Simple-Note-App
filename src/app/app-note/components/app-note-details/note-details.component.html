@@ -1,0 +1,17 @@
+<div fxLayout="column" fxLayoutAlign="center center">
+    <h1>Note Details!!</h1>
+    <div fxLayout="column" fxLayoutAlign="center space-between" class="mt-30 w-100-p">
+        <div fxLayout="row" fxLayoutAlign="space-between center" fxFlex="100">
+            <span fxFlex="50">Title</span>
+            <span>{{currentNote?.title}}</span>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between center" fxFlex="100">
+            <span fxFlex="50">Body</span>
+            <span>{{currentNote?.body}}</span>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between center" fxFlex="100">
+            <span fxFlex="50">Create Date</span>
+            <span>{{currentNote?.createDate | date}}</span>
+        </div>
+    </div>
+</div>
