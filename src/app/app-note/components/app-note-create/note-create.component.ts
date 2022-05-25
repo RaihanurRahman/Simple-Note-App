@@ -17,6 +17,7 @@ export class NoteCreateComponent implements OnInit, OnDestroy {
     noteForm: FormGroup | undefined;
     subcriptionList: Subscription[] = [];
     noteList: INotes[] = [];
+    isEdit: boolean = false;
     
     constructor(
         private router: Router,
@@ -31,6 +32,7 @@ export class NoteCreateComponent implements OnInit, OnDestroy {
             console.log(params);
             this.currentNoteId = params.id;
         })
+        if(this.currentNoteId) this.isEdit = true;
         this.subcriptionList.push(subscription); 
      }
   

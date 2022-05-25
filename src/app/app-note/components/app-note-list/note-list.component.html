@@ -4,7 +4,7 @@
         <button mat-raised-button type="button" class="btn" (click)="createNewNote()">Add New Note</button>
     </div>
     <div fxLayout="column" fxLayoutAlign="center space-between" class="mt-30 w-100-p" fxLayoutGap="15px">
-        <div *ngIf="noteList.length > 0" fxLayout="row" fxLayoutAlign="space-between center" fxFlex="100">
+        <div *ngIf="noteList.length > 0" fxLayout="row" fxLayoutAlign="space-between center" class="test" fxFlex="100">
             <span fxFlex="15" class="head-text">Title</span>
             <span fxFlex="40" class="head-text">body</span>
             <span fxFlex="25" class="head-text">Create Date</span>
@@ -12,7 +12,7 @@
             <span fxFlex="10" class="head-text"></span>
         </div>
         <div *ngIf="noteList.length > 0">
-            <div *ngFor="let note of noteList" fxLayout="row" fxLayoutAlign="space-between center" (click)="gotToNoteDetails(note.noteId);" >
+            <div *ngFor="let note of noteList" fxLayout="row" fxLayoutAlign="space-between center" class="border cursor-pointer active" (click)="gotToNoteDetails(note.noteId);" >
                 <span fxFlex="15">{{note?.title}}</span>
                 <span fxFlex="40">{{note?.body}}</span>
                 <span fxFlex="25">{{note?.createDate | date}}</span>

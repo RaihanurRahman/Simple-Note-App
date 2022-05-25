@@ -1,7 +1,7 @@
+import { Subscription } from 'rxjs';
 import { INotes } from './../../models/Note.models';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-note-details',
@@ -14,7 +14,8 @@ export class NoteDetailsComponent implements OnInit, OnDestroy {
   subcriptionList: Subscription[] = [];
   
   constructor(
-      private activateRoute: ActivatedRoute
+      private activateRoute: ActivatedRoute,
+      private router: Router
   ) {
         let subscription = this.activateRoute.params.subscribe((params: any) =>{
             console.log(params);
@@ -26,6 +27,10 @@ export class NoteDetailsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
       let noteList = JSON.parse(localStorage.getItem("NoteList") || "{}");
       this.currentNote = noteList.filter((item: any) => item.noteId == this.currentNoteId)[0];
+  }
+
+  editNote(){
+    this.router.navigate(['notes', 'edit',`${this.currentNoteId}`]).then((r) => r);
   }
 
   ngOnDestroy(): void {

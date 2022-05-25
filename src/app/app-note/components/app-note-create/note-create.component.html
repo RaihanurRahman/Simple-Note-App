@@ -1,5 +1,7 @@
 <div fxLayout="column" fxLayoutAlign="center center" class="m-30">
-    <h1>Create New Note</h1>
+    <h1 *ngIf="!isEdit">Create New Note</h1>
+    <h1 *ngIf="isEdit">Edit Note</h1>
+
 
     <div fxLayout="column" fxLayoutAlign="center space-between" class="mt-30 w-100-p">
         <form *ngIf="noteForm" [formGroup]="noteForm" fxLayout="column" fxLayoutAlign="center space-between" class="w-100-p">
@@ -27,8 +29,9 @@
                 </mat-form-field>
             </div>
             <div fxLayout="row" fxLayoutAlign="end end" class="w-100-p">
-                <button mat-raised-button type="button" class="btn-gray" *ngIf="noteForm.invalid" [disabled]="true">Create Note</button>
-                <button mat-raised-button type="button" class="btn" *ngIf="noteForm.valid" (click)="createNewNote()">Create Note</button>
+                <button mat-raised-button type="button" class="btn-gray" *ngIf="noteForm.invalid && !isEdit" [disabled]="true">Create Note</button>
+                <button mat-raised-button type="button" class="btn" *ngIf="noteForm.valid && !isEdit" (click)="createNewNote()">Create Note</button>
+                <button mat-raised-button type="button" class="btn" *ngIf="noteForm.valid && isEdit" (click)="createNewNote()">Edit Note</button>
             </div>
         </form>
     </div>
